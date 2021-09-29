@@ -1,13 +1,22 @@
 var requestUrl = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey=de97dc6df0294b1abbe327d186a0de3d'
-var userInput = document.querySelector(".form-control")
+ var userInput; //document.querySelector(".form-control").value
+var button = document.getElementById("test")
+var btn = $("#searched-btn")
+
+btn.on("click", function(){
+    var btn = $("#searched-btn").val();
+    if (btn !== null) {
+        localStorage.setItem("ingredient", btn)
+    }
+    getRec();
+})
+
 
 function getRec() {
-    fetch(requestUrl) + "&ingredients=" + userInput
+    fetch(requestUrl + "&ingredients=" + "apple")
     .then((response) => response.json())
-    .then ((data) => this.displayRecipe(data));
+    .then ((data) => console.log(data))
 };
 
-function displayRecipe() {
-    const { name } = data;
-    console.log(name);
-}
+
+// button.addEventListener("click", getRec);
