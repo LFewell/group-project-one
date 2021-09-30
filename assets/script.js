@@ -15,7 +15,8 @@ btn.on("click", function(){
     .then ((data) => console.log(data))
 };
 function displayRecipe(data) {
-    const 
+    const {name} = title;
+    console.log(name);
 }
 
 });
