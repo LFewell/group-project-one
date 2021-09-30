@@ -13,4 +13,9 @@ btn.on("click", function(){
     fetch(requestUrl + "&ingredients=" + userInput)
     .then((response) => response.json())
     .then ((data) => console.log(data))
-}});
+};
+function displayRecipe(data) {
+    const 
+}
+
+});
