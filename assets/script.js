@@ -5,13 +5,13 @@ var button = document.getElementById("test")
 var btn = $("#search-btn")
 
 
-btn.on("click", function(){
+btn.on("click", function() {
     var userInput = document.getElementById('input').value
     if (userInput !== null) {
         localStorage.setItem("ingredient", userInput)
     }
     getRec();
-    recipeInfo();
+
     function getRec() {
     fetch(requestUrl + apiKey + "&ingredients=" + userInput + "&number=5")
     .then((response) => response.json())
