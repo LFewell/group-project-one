@@ -1,5 +1,5 @@
 var requestUrl = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey='
-var apiKey = "360bc10ebb6f43fd953b5e1ff0f3dc83"
+var apiKey = "de97dc6df0294b1abbe327d186a0de3d"
 var directionUrl = "https://api.spoonacular.com/recipes/"
 var btn = $("#search-btn") 
 
