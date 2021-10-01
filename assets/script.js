@@ -4,7 +4,7 @@ var directionUrl = "https://api.spoonacular.com/recipes/"
 var btn = $("#search-btn") 
 
 
-btn.on("click", function(){
+btn.on("click", function() {
     var userInput = document.getElementById('input').value
     if (userInput !== null) {
         localStorage.setItem("ingredient", userInput)
@@ -60,7 +60,7 @@ function recipeInfo(data) {
     .then((response) => response.json())
     .then (function(data) {
         console.log(data);
-        
+
 
     })
     }
