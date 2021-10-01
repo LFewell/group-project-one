@@ -29,6 +29,7 @@ btn.on("click", function () {
           }
         }
         recipeInfo(data);
+        displayCards();
       });
   }
 
@@ -73,5 +74,10 @@ btn.on("click", function () {
         document.querySelector("#bCalorie1").innerText = " " + calories;
         console.log("widgetdata", data);
       });
+  }
+  function displayCards() {
+      var cards = document.querySelector(".testl");
+      cards.classList.toggle("d-none")
+      cards.classList.toggle("is-shown");
   }
 });

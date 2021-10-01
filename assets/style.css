@@ -1,0 +1,27 @@
+body {
+    background-color: rgb(179, 52, 14);
+}
+h3{
+    color: white;
+}
+.btn{
+    background-color: olive;
+    color: white;
+}
+.container{
+    background-color: olive;
+    color: white;
+}
+.btn-outline-secondary{
+    background-color: olive;
+}
+ul{
+    list-style-type: none;
+}
+.spacing{
+    text-indent: 10px;
+}
+
+.is-shown {
+    display:block;
+}
