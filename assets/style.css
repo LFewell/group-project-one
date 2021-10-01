@@ -21,3 +21,7 @@ ul{
 .spacing{
     text-indent: 10px;
 }
+
+.is-shown {
+    display:block;
+}
