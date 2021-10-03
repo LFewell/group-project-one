@@ -1,4 +1,4 @@
-var apiKey = "360bc10ebb6f43fd953b5e1ff0f3dc83";
+var apiKey = "a296389af1864268af1211e51671cff0";
 var spoonacularUrl = "https://api.spoonacular.com/recipes/";
 var btnSearchIngredients = $("#btn-search-ingredients");
 var btnSaveCalendar = $("#btn-save-calendar");

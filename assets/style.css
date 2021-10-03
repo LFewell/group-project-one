@@ -32,3 +32,6 @@ select {
     align-items: center;
     padding-bottom: 5px;
 }
+#topButtons{
+    margin-left: 15rem;
+}
