@@ -1,4 +1,4 @@
-var apiKey = "360bc10ebb6f43fd953b5e1ff0f3dc83";
+var apiKey = "d9a189b25a4c4d7b8632fbe0e6a153e0";
 var spoonacularUrl = "https://api.spoonacular.com/recipes/";
 var btnSearchIngredients = $("#btn-search-ingredients");
 var btnSaveCalendar = $("#btn-save-calendar");
@@ -106,9 +106,17 @@ btnSearchIngredients.on("click", function() {
                     document.getElementById("bCalorie" + i).innerText = " " + calories;
                     console.log("widgetdata", nutritionData);
                 });
+                addData();
+                function addData(chart,) {
+                    chart.data.datasets.forEach((dataset) => {
+                        dataset.data.push(nutritionData.calories);
+                    });
+                    chart.update();
+                };
             fetch(spoonacularUrl + id + "/ingredientWidget.json" + "?apiKey=" + apiKey)
                 .then ((response) => response.json())
                 .then(function (data) {
+                    
                     var ingredients = data.ingredients;
                     console.log(ingredients);
                     document.querySelector("#bIngredients1").innerText = " " + ingredients;
@@ -123,3 +131,48 @@ btnSearchIngredients.on("click", function() {
         cards.classList.toggle("d-none");
         cards.classList.toggle("d-block");
     }
+
+    function addData(chart, label, data) {
+        chart.data.labels.push(label);
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data.push(data);
+        });
+        chart.update();
+    }
+    
+
+var ctx = document.getElementById('chart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Calories","Fat","Carbs","Protein"],
+        datasets: [{
+            label: 'Weekly Nutrition',
+            data: [],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
