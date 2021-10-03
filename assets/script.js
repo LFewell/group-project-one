@@ -1,4 +1,4 @@
-var apiKey = "d9a189b25a4c4d7b8632fbe0e6a153e0";
+var apiKey = "a296389af1864268af1211e51671cf0f";
 var spoonacularUrl = "https://api.spoonacular.com/recipes/";
 var btnSearchIngredients = $("#btn-search-ingredients");
 var btnSaveCalendar = $("#btn-save-calendar");
@@ -117,6 +117,9 @@ function addRecipeToSlot(buttonId) {
         document.getElementById("dDiretions5").innerHTML = " " + recipe;
         document.getElementById("dCalorie5").innerText = " " + calories;
     }
+    //data.datasets = createCalorieDataset()
+    myChart.data.datasets[0].data = createCalorieDataset(false)
+    myChart.update();
 }
 
 btnSaveCalendar.on("click", function() {
@@ -181,74 +184,56 @@ btnSearchIngredients.on("click", function() {
                     document.getElementById("card-cal" + i).innerText = " " + calories;
                     console.log("widgetdata", nutritionData);
                 });
-                addData();
-                function addData(chart,) {
-                    chart.data.datasets.forEach((dataset) => {
-                        dataset.data.push(nutritionData.calories);
-                    });
-                    chart.update();
-                };
-            fetch(spoonacularUrl + id + "/ingredientWidget.json" + "?apiKey=" + apiKey)
-                .then ((response) => response.json())
-                .then(function (data) {
-                    
-                    var ingredients = data.ingredients;
-                    console.log(ingredients);
-                    document.querySelector("#bIngredients1").innerText = " " + ingredients;
-                }
-                )
-            }
-        }
-    });
-
-    function displayCards() {
-        var cards = document.querySelector("#recipeChocies");
-        cards.classList.toggle("d-none");
-        cards.classList.toggle("d-block");
-    }
-
-    function addData(chart, label, data) {
-        chart.data.labels.push(label);
-        chart.data.datasets.forEach((dataset) => {
-            dataset.data.push(data);
-        });
-        chart.update();
-    }
-    
-
-var ctx = document.getElementById('chart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["Calories","Fat","Carbs","Protein"],
-        datasets: [{
-            label: 'Weekly Nutrition',
-            data: [],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
         }
     }
 });
+
+function displayCards() {
+    var cards = document.querySelector("#recipeChocies");
+    cards.classList.toggle("d-none");
+    cards.classList.toggle("d-block");
+}
+
+const labels = ["Monday", "Tuesday", "wednesday", "Thursday", "Friday"]
+const data = {
+    labels: labels,
+    datasets: [{
+        label: 'My First Dataset',
+        data: createCalorieDataset(true),
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+    }]
+};
+
+const config = {
+    type: 'line',
+    data: data,
+};
+
+function createCalorieDataset(shouldReloadFromLocalStorage) {
+    return [
+        getDailyCalories("1", shouldReloadFromLocalStorage),
+        getDailyCalories("2", shouldReloadFromLocalStorage),
+        getDailyCalories("3", shouldReloadFromLocalStorage),
+        getDailyCalories("4", shouldReloadFromLocalStorage),
+        getDailyCalories("5", shouldReloadFromLocalStorage),
+    ]
+}
+
+function getDailyCalories(index, shouldReloadFromLocalStorage) {
+    if (shouldReloadFromLocalStorage) {
+        calenderLoad();
+    }
+    var bCal = parseInt(document.getElementById("bCalorie" + index).innerText.replace('k', '').replace(' ', ''));
+    var lCal = parseInt(document.getElementById("lCalorie" + index).innerText.replace('k', '').replace(' ', ''));
+    var dCal = parseInt(document.getElementById("dCalorie" + index).innerText.replace('k', '').replace(' ', ''));
+    return (bCal ? bCal : 0) + (lCal ? lCal : 0) + (dCal ? dCal : 0)
+}
+
 calenderLoad();
+
+var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+);
