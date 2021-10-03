@@ -37,8 +37,10 @@ btn.on("click", function () {
     recipeCard(data);
     var name = data[0].title;
     var ingredient = data[0].usedIngredients;
+    var name2 = data[3].title;
     document.querySelector("#bRecipe1").innerText = " " + name;
-    document.querySelector("#bIngredients1").innerText = " " + ingredient;
+    document.querySelector("#bRecipe2").innerText = " " + name2;
+    document.querySelector("#bIngredients2").innerText = " " + ingredient;
 
     function recipeCard(data) {
       for (i = 0; i < 5; i++) {
@@ -74,9 +76,18 @@ btn.on("click", function () {
         document.querySelector("#bCalorie1").innerText = " " + calories;
         console.log("widgetdata", data);
       });
+      fetch(directionUrl + id + "/ingredientWidget.json" + "?apiKey=" + apiKey)
+      .then ((response) => response.json())
+      .then(function (data) {
+          JSON.stringify(data);
+          var ingredients = data.ingredients;
+          console.log(ingredients);
+          document.querySelector("#bIngredients1").innerText = " " + ingredients;
+      }
+      )
   }
   function displayCards() {
-      var cards = document.querySelector(".testl");
+      var cards = document.querySelector(".visible");
       cards.classList.toggle("d-none")
       cards.classList.toggle("is-shown");
   }

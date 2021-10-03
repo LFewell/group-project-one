@@ -25,3 +25,7 @@ ul{
 .is-shown {
     display:block;
 }
+
+.row{
+    padding: 0;
+}
