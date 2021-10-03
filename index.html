@@ -16,11 +16,28 @@
     <header>
         <div class="jumbotron jumbotron-fluid"><img class="mx-auto d-block img-fluid" src="./assets/imgs/header-1 copy.png" alt="header"></div>
     </header>
+    <button id="btn-save-calendar" class="btn btn-primary" type="submit">Save Calendar</button>
+    <button id="btn-clear-calendar" class="btn btn-primary" type="submit">Clear Calendar</button>
+    <select name="day_choice" id="days">
+      <option disabled selected value> --  select a day  -- </option>
+      <option value="Monday">Monday</option>
+      <option value="Tuesday">Tuesday</option>
+      <option value="Wednesday">Wednesday</option>
+      <option value="Thursday">Thursday</option>
+      <option value="Friday">Friday</option>
+      </select>
+    <select name="meal_choice" id="meals">
+        <option disabled selected value> -- select a meal -- </option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+        </select>
+    </br>
     <div class="container">
         <div class="row containerRow">
             <div class="col border">
                 <div class="row border spacing">Monday</div>
-                <div class="row border">
+                <div id="mon-b" class="row border">
                     <div>Breakfast</div>
                     <ul>
                         <li>Recipe Name:<span id="bRecipe1"></span></li>
@@ -29,7 +46,7 @@
                         <li>Calorie Count:<span id="bCalorie1"></span></li>
                     </ul>
                 </div>
-                <div class="row border ">
+                <div id="mon-l" class="row border ">
                     <div>Lunch</div>
                     <ul>
                         <li>Recipe Name:<span id="lRecipe1"></span></li>
@@ -38,9 +55,9 @@
                         <li>Calorie Count:<span id="lCalorie1"></span></li>
                     </ul>
                 </div>
-                <div class="row border">
+                <div id="mon-d" class="row border">
                     <div>Dinner</div>
-                    <ul> 
+                    <ul>
                         <li>Recipe Name:<span id="dRecipe1"></span></li>
                         <li>Ingredients:<span id="dIngredients1"></span> </li>
                         <li>Directions:<span id="dDiretions1"></span></li>
@@ -51,8 +68,8 @@
 
             <div class="col border container-fluid">
                 <div class="row border spacing">Tuesday</div>
-                <div class="row border">
-                   <div> Breakfast</div>
+                <div id="tue-b" class="row border">
+                    <div> Breakfast</div>
                     <ul>
                         <li>Recipe Name:<span id="bRecipe2"></span></li>
                         <li>Ingredients:<span id="bIngredients2"></span> </li>
@@ -60,7 +77,7 @@
                         <li>Calorie Count:<span id="bCalorie2"></span></li>
                     </ul>
                 </div>
-                <div class="row border">
+                <div id="tue-l" class="row border">
                     <div>Lunch</div>
                     <ul>
                         <li>Recipe Name:<span id="lRecipe2"></span></li>
@@ -69,7 +86,7 @@
                         <li>Calorie Count:<span id="lCalorie2"></span></li>
                     </ul>
                 </div>
-                <div class="row border">
+                <div id="tue-d" class="row border">
                     <div>Dinner</div>
                     <ul>
                         <li>Recipe Name:<span id="dRecipe2"></span></li>
@@ -82,7 +99,7 @@
 
             <div class="col border">
                 <div class="row border spacing">Wednesday</div>
-                <div class="row border">
+                <div id="wed-b" class="row border">
                     <div>Breakfast</div>
                     <ul>
                         <li>Recipe Name:<span id="bRecipe3"></span></li>
@@ -91,7 +108,7 @@
                         <li>Calorie Count:<span id="bCalorie3"></span></li>
                     </ul>
                 </div>
-                <div class="row border">
+                <div id="wed-l" class="row border">
                     <div>Lunch</div>
                     <ul>
                         <li>Recipe Name:<span id="lRecipe3"></span></li>
@@ -100,7 +117,7 @@
                         <li>Calorie Count:<span id="lCalorie3"></span></li>
                     </ul>
                 </div>
-                <div class="row border">
+                <div id="wed-d" class="row border">
                     <div>Dinner</div>
                     <ul>
                         <li>Recipe Name:<span id="dRecipe3"></span></li>
@@ -113,7 +130,7 @@
 
             <div class="col border">
                 <div class="row border spacing">Thursday</div>
-                <div class="row border">
+                <div id="thu-b" class="row border">
                     <div>Breakfast</div>
                     <ul>
                         <li>Recipe Name:<span id="bRecipe4"></span></li>
@@ -122,7 +139,7 @@
                         <li>Calorie Count:<span id="bCalorie4"></span></li>
                     </ul>
                 </div>
-                <div class="row border">
+                <div id="thu-l" class="row border">
                     <div>Lunch</div>
                     <ul>
                         <li>Recipe Name:<span id="lRecipe4"></span></li>
@@ -131,7 +148,7 @@
                         <li>Calorie Count:<span id="lCalorie4"></span></li>
                     </ul>
                 </div>
-                <div class="row border">
+                <div id="thu-d" class="row border">
                     <div>Dinner</div>
                     <ul>
                         <li>Recipe Name:<span id="dRecipe4"></span></li>
@@ -144,7 +161,7 @@
 
             <div class="col border">
                 <div class="row border spacing">Friday</div>
-                <div class="row border">
+                <div id="fri-b" class="row border">
                     <div>Breakfast</div>
                     <ul>
                         <li>Recipe Name:<span id="bRecipe5"></span></li>
@@ -153,7 +170,7 @@
                         <li>Calorie Count:<span id="bCalorie5"></span></li>
                     </ul>
                 </div>
-                <div class="row border">
+                <div id="fri-l" class="row border">
                     <div>Lunch</div>
                     <ul>
                         <li>Recipe Name:<span id="lRecipe5"></span></li>
@@ -162,7 +179,7 @@
                         <li>Calorie Count:<span id="lCalorie5"></span></li>
                     </ul>
                 </div>
-                <div class="row border">
+                <div id="fri-d" class="row border">
                     <div>Dinner</div>
                     <ul>
                         <li>Recipe Name:<span id="dRecipe5"></span></li>
@@ -171,78 +188,69 @@
                         <li>Calorie Count:<span id="dCalorie5"></span></li>
                     </ul>
                 </div>
-
             </div>
         </div>
-    </div>
 
     </div>
     <div class="mt-3 mx-auto" style="width: 400px;">
         <div class="input-group mb-3">
-            <div class="col-lg-4">
-                <input type="text" class="form-control" placeholder="Apples" id="input">
+            <div class="col-lg-6">
+                <input type="text" class="form-control" placeholder="Apples,butter,sugar" id="input-ingredients">
 
             </div>
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" id="search-btn" type="button">Search</button>
+                <button class="btn btn-outline-secondary" id="btn-search-ingredients" type="button">Search</button>
             </div>
         </div>
     </div>
-        </div>
 
-        <div class="col-md-12 visible d-none" id="recipeChocies">
-            <h3 class="text-center">Recipe Choices</h3>
-            <div class="row">
-                <div class="card col-md-2" style="width: 18rem;">
-                    <img class="card-img-top" id="card0" src="" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title"><span id="idTitle0"></span></h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+    <div class="col-md-12 d-none" id="recipeChocies">
+        <h3 class="text-center">Recipe Choices</h3>
+        <div class="row">
+            <div class="card col-md" style="width: 18rem;">
+                <img class="card-img-top" id="card0" src="" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><span id="idTitle0"></span></h5>
+                    <p id="card-text0" class="card-text"></p>
+                    <a id="card-add0" href="#" class="btn btn-primary">Add</a>
                 </div>
-                <div class="card col-md-2 " style="width: 18rem;">
-                    <img class="card-img-top" id="card1" src="" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title"><span id="idTitle1"></span></h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+            </div>
+            <div class="card col-md" style="width: 18rem;">
+                <img class="card-img-top" id="card1" src="" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><span id="idTitle1"></span></h5>
+                    <p id="card-text1" class="card-text"></p>
+                    <a id="card-add1" href="#" class="btn btn-primary">Add</a>
                 </div>
-                <div class="card col-md-2" style="width: 18rem;">
-                    <img class="card-img-top" id="card2" src="" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title"><span id="idTitle2"></span></h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+            </div>
+            <div class="card col-md" style="width: 18rem;">
+                <img class="card-img-top" id="card2" src="" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><span id="idTitle2"></span></h5>
+                    <p id="card-text2" class="card-text"></p>
+                    <a id="card-add2" href="#" class="btn btn-primary">Add</a>
                 </div>
-                <div class="card col-md-2" style="width: 18rem;">
-                    <img class="card-img-top" id="card3" src="" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title"><span id="idTitle3"></span></h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+            </div>
+            <div class="card col-md" style="width: 18rem;">
+                <img class="card-img-top" id="card3" src="" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><span id="idTitle3"></span></h5>
+                    <p id="card-text3" class="card-text"></p>
+                    <a id="card-add3" href="#" class="btn btn-primary">Add</a>
                 </div>
-                <div class="card col-md-2" style="width: 18rem;">
-                    <img class="card-img-top" id="card4" src="" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title"><span id="idTitle4"></span></h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+            </div>
+            <div class="card col-md" style="width: 18rem;">
+                <img class="card-img-top" id="card4" src="" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><span id="idTitle4"></span></h5>
+                    <p id="card-text4" class="card-text"></p>
+                    <a id="card-add4" href="#" class="btn btn-primary">Add</a>
                 </div>
             </div>
         </div>
+    </div>
 
-
-          
-            <script
-            src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous"></script> 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
-        <script src="./assets/script.js"></script>
-    </body>
-</html>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+    <script src="./assets/script.js"></script>
+</body>
