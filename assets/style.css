@@ -5,6 +5,14 @@ body {
 h3 {
     color: white;
 }
+select {
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+ul {
+    list-style-type: none;
+}
 
 .btn {
     background-color: olive;
@@ -20,19 +28,14 @@ h3 {
     background-color: olive;
 }
 
-ul {
-    list-style-type: none;
-}
-
 .spacing {
     text-indent: 10px;
 }
 
-select {
-    align-items: center;
-    padding-bottom: 5px;
-}
-
 #topButtons {
-    margin-left: 15rem;
+    margin-left: 25rem;
+}
+#myChart{
+
+    background-color: white;
 }

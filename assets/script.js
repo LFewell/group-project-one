@@ -1,4 +1,5 @@
-var apiKey = "a296389af1864268af1211e51671cf0f";
+//declared varibles 
+var apiKey = "a296389af1864268af1211e51671cff0";
 var spoonacularUrl = "https://api.spoonacular.com/recipes/";
 var btnSearchIngredients = $("#btn-search-ingredients");
 var btnSaveCalendar = $("#btn-save-calendar");
@@ -36,6 +37,7 @@ $("#card-add4").on('click', function() {
     addRecipeToSlot("4");
 });
 
+//function to allow meals to be put on certain days and times
 function addRecipeToSlot(buttonId) {
     var meals = $("#meals").val();
     var days = $("#days").val();
@@ -121,21 +123,21 @@ function addRecipeToSlot(buttonId) {
     myChart.data.datasets[0].data = createCalorieDataset(false)
     myChart.update();
 }
-
+//save button for calendar
 btnSaveCalendar.on("click", function() {
     for (slot of calendarSlots) {
         var slotId = "#" + slot
         localStorage.setItem(slot, $(slotId).html())
     }
 })
-
+//clear button for calendar
 btnClearCalendar.on("click", function() {
     for (slot of calendarSlots) {
         localStorage.removeItem(slot)
     }
     window.location.reload()
 })
-
+//search button for inputting ingredients
 btnSearchIngredients.on("click", function() {
     var userInput = document.getElementById("input-ingredients").value;
 
@@ -144,7 +146,7 @@ btnSearchIngredients.on("click", function() {
     }
 
     getRecipe();
-
+//function to get recipe from API 
     function getRecipe() {
         fetch(spoonacularUrl + "findByIngredients?apiKey=" + apiKey + "&ingredients=" + userInput + "&number=5")
             .then((response) => response.json())
@@ -158,7 +160,7 @@ btnSearchIngredients.on("click", function() {
                 displayCards();
             });
     }
-
+//function to display the 5 recipes in cards
     function displayRecipe(data) {
         for (var i = 0; i < 5; i++) {
             $("#idTitle" + i).html(data[i].title);
@@ -187,30 +189,30 @@ btnSearchIngredients.on("click", function() {
         }
     }
 });
-
+//function to unhide cards once recipe is searched
 function displayCards() {
     var cards = document.querySelector("#recipeChocies");
     cards.classList.toggle("d-none");
     cards.classList.toggle("d-block");
 }
-
-const labels = ["Monday", "Tuesday", "wednesday", "Thursday", "Friday"]
+//chart.js input
+const labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 const data = {
     labels: labels,
     datasets: [{
-        label: 'My First Dataset',
+        label: 'Daily Calorie Intake',
         data: createCalorieDataset(true),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
     }]
 };
-
+//makes it a line chart
 const config = {
     type: 'line',
     data: data,
 };
-
+//function to get total calories per day
 function createCalorieDataset(shouldReloadFromLocalStorage) {
     return [
         getDailyCalories("1", shouldReloadFromLocalStorage),
@@ -220,7 +222,7 @@ function createCalorieDataset(shouldReloadFromLocalStorage) {
         getDailyCalories("5", shouldReloadFromLocalStorage),
     ]
 }
-
+//function to reload chart when new meals are inputed
 function getDailyCalories(index, shouldReloadFromLocalStorage) {
     if (shouldReloadFromLocalStorage) {
         calenderLoad();
