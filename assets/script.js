@@ -109,7 +109,6 @@ btnSearchIngredients.on("click", function() {
             fetch(spoonacularUrl + id + "/ingredientWidget.json" + "?apiKey=" + apiKey)
                 .then ((response) => response.json())
                 .then(function (data) {
-                    JSON.stringify(data);
                     var ingredients = data.ingredients;
                     console.log(ingredients);
                     document.querySelector("#bIngredients1").innerText = " " + ingredients;
