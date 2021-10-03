@@ -10,33 +10,113 @@ var calendarSlots = ["mon-b", "mon-l", "mon-d", "tue-b", "tue-l", "tue-d", "wed-
     If there is any data in local storage for a Calendar Slot,
     populate Slot with stored data
 */
-for (slot of calendarSlots) {
-    var slotId = "#" + slot
-    var savedSlot = localStorage.getItem(slot)
-    if (savedSlot && savedSlot != "") {
-        $(slotId).html(localStorage.getItem(slot))
+function calenderLoad() {
+    for (slot of calendarSlots) {
+        var slotId = "#" + slot
+        var savedSlot = localStorage.getItem(slot)
+        if (savedSlot && savedSlot != "") {
+            $(slotId).html(localStorage.getItem(slot))
+        }
     }
 }
-
 //Enables adding a Recipe Card to a Calendar Slot 
 $("#card-add0").on('click', function() {
-    addRecipeToSlot("#card-add0");
+    addRecipeToSlot("0");
 });
 $("#card-add1").on('click', function() {
-    addRecipeToSlot("#card-add1");
+    addRecipeToSlot("1");
 });
 $("#card-add2").on('click', function() {
-    addRecipeToSlot("#card-add2");
+    addRecipeToSlot("2");
 });
 $("#card-add3").on('click', function() {
-    addRecipeToSlot("#card-add3");
+    addRecipeToSlot("3");
 });
 $("#card-add4").on('click', function() {
-    addRecipeToSlot("#card-add4");
+    addRecipeToSlot("4");
 });
 
 function addRecipeToSlot(buttonId) {
-    //TODO: Save Data from Recipe Card into calendar slot specified in drop downs
+    var meals = $("#meals").val();
+    var days = $("#days").val();
+    var name = $('#idTitle' + buttonId).text()
+    var recipe = $('#card-text' + buttonId).html()
+    var calories = $('#card-cal' + buttonId).text()
+    if (days == 'Monday' && meals == 'Breakfast') {
+        document.getElementById("bRecipe1").innerText = " " + name;
+        document.getElementById("bDiretions1").innerHTML = " " + recipe;
+        document.getElementById("bCalorie1").innerText = " " + calories;
+    }
+    if (days == 'Monday' && meals == 'Lunch') {
+        document.getElementById("lRecipe1").innerText = " " + name;
+        document.getElementById("lDiretions1").innerHTML = " " + recipe;
+        document.getElementById("lCalorie1").innerText = " " + calories;
+    }
+    if (days == 'Monday' && meals == 'Dinner') {
+        document.getElementById("dRecipe1").innerText = " " + name;
+        document.getElementById("dDiretions1").innerHTML = " " + recipe;
+        document.getElementById("dCalorie1").innerText = " " + calories;
+    }
+    if (days == 'Tuesday' && meals == 'Breakfast') {
+        document.getElementById("bRecipe2").innerText = " " + name;
+        document.getElementById("bDiretions2").innerHTML = " " + recipe;
+        document.getElementById("bCalorie2").innerText = " " + calories;
+    }
+    if (days == 'Tuesday' && meals == 'Lunch') {
+        document.getElementById("lRecipe2").innerText = " " + name;
+        document.getElementById("lDiretions2").innerHTML = " " + recipe;
+        document.getElementById("lCalorie2").innerText = " " + calories;
+    }
+    if (days == 'Tuesday' && meals == 'Dinner') {
+        document.getElementById("dRecipe2").innerText = " " + name;
+        document.getElementById("dDiretions2").innerHTML = " " + recipe;
+        document.getElementById("dCalorie2").innerText = " " + calories;
+    }
+    if (days == 'Wednesday' && meals == 'Breakfast') {
+        document.getElementById("bRecipe3").innerText = " " + name;
+        document.getElementById("bDiretions3").innerHTML = " " + recipe;
+        document.getElementById("bCalorie3").innerText = " " + calories;
+    }
+    if (days == 'Wednesday' && meals == 'Lunch') {
+        document.getElementById("lRecipe3").innerText = " " + name;
+        document.getElementById("lDiretions3").innerHTML = " " + recipe;
+        document.getElementById("lCalorie3").innerText = " " + calories;
+    }
+    if (days == 'Wednesday' && meals == 'Dinner') {
+        document.getElementById("dRecipe3").innerText = " " + name;
+        document.getElementById("dDiretions3").innerHTML = " " + recipe;
+        document.getElementById("dCalorie3").innerText = " " + calories;
+    }
+    if (days == 'Thursday' && meals == 'Breakfast') {
+        document.getElementById("bRecipe4").innerText = " " + name;
+        document.getElementById("bDiretions4").innerHTML = " " + recipe;
+        document.getElementById("bCalorie4").innerText = " " + calories;
+    }
+    if (days == 'Thursday' && meals == 'Lunch') {
+        document.getElementById("lRecipe4").innerText = " " + name;
+        document.getElementById("lDiretions4").innerHTML = " " + recipe;
+        document.getElementById("lCalorie4").innerText = " " + calories;
+    }
+    if (days == 'Thursday' && meals == 'Dinner') {
+        document.getElementById("dRecipe4").innerText = " " + name;
+        document.getElementById("dDiretions4").innerHTML = " " + recipe;
+        document.getElementById("dCalorie4").innerText = " " + calories;
+    }
+    if (days == 'Friday' && meals == 'Breakfast') {
+        document.getElementById("bRecipe5").innerText = " " + name;
+        document.getElementById("bDiretions5").innerHTML = " " + recipe;
+        document.getElementById("bCalorie5").innerText = " " + calories;
+    }
+    if (days == 'Friday' && meals == 'Lunch') {
+        document.getElementById("lRecipe5").innerText = " " + name;
+        document.getElementById("lDiretions5").innerHTML = " " + recipe;
+        document.getElementById("lCalorie5").innerText = " " + calories;
+    }
+    if (days == 'Friday' && meals == 'Dinner') {
+        document.getElementById("dRecipe5").innerText = " " + name;
+        document.getElementById("dDiretions5").innerHTML = " " + recipe;
+        document.getElementById("dCalorie5").innerText = " " + calories;
+    }
 }
 
 btnSaveCalendar.on("click", function() {
@@ -50,6 +130,7 @@ btnClearCalendar.on("click", function() {
     for (slot of calendarSlots) {
         localStorage.removeItem(slot)
     }
+    window.location.reload()
 })
 
 btnSearchIngredients.on("click", function() {
@@ -69,9 +150,9 @@ btnSearchIngredients.on("click", function() {
                     dataIds.push(recipe.id);
                     console.log(dataIds)
                 }
-                displayRecipe(data); //Populating first 5 Recipe Cards, Hardcoding Monday Breakfast
+                displayRecipe(data);
                 recipeInfo(data);
-                displayCards(); //Show hidden Recipe Cards
+                displayCards();
             });
     }
 
@@ -80,12 +161,6 @@ btnSearchIngredients.on("click", function() {
             $("#idTitle" + i).html(data[i].title);
             $("#card" + i).attr("src", data[i].image);
         }
-
-        //Hardcode First Recipe title and first ingredient to Monday's Breakfast
-        var name = data[0].title;
-        var ingredient = data[0].usedIngredients[0].name;
-        document.querySelector("#bRecipe1").innerText = " " + name;
-        document.querySelector("#bIngredients1").innerText = " " + ingredient;
     }
 
     function recipeInfo(data) {
@@ -103,7 +178,7 @@ btnSearchIngredients.on("click", function() {
                 .then(function(nutritionData) {
                     var calories = nutritionData.calories;
                     console.log("Setting calories for " + i + " with calories " + nutritionData.calories)
-                    document.getElementById("bCalorie" + i).innerText = " " + calories;
+                    document.getElementById("card-cal" + i).innerText = " " + calories;
                     console.log("widgetdata", nutritionData);
                 });
         }
@@ -115,3 +190,5 @@ btnSearchIngredients.on("click", function() {
         cards.classList.toggle("d-block");
     }
 });
+
+calenderLoad();
